@@ -32,7 +32,8 @@ MealPlan.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "fitnessplan",
+    //TODO: Update model name
+    modelName: "mealplan",
   }
 );
 module.exports = MealPlan;
