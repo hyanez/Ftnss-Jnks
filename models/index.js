@@ -2,6 +2,8 @@
 const FitnessPlan = require("./FitnessPlan");
 const Workout = require("./Workout");
 const Exercise = require("./Exercise");
+const MealPlan = require("./MealPlan");
+const Recipe = require("./Recipe");
 
 //fitnessplan has many workouts
 
