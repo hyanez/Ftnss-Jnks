@@ -1,6 +1,7 @@
 //Index for all models
 const FitnessPlan = require("./FitnessPlan");
 const Workout = require("./Workout");
+const Exercise = require("./Exercise");
 
 //fitnessplan has many workouts
 
