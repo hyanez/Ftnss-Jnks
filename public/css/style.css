@@ -2,6 +2,25 @@
   font-size: 16px;
 }
 
+#nav-links {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  border-style: solid;
+  border-width: 2px;
+  border-color: navy;
+  padding: 2rem;
+  background-color: blue;
+}
+
+h1 {
+  color: navy;
+}
+
 .login-container {
   border-style: solid;
   border-width: 2px;
@@ -11,4 +30,8 @@
   margin-top: 2rem;
   margin-left: 8rem;
   margin-right: 8rem;
+}
+
+#main {
+  background-color: grey;
 }
