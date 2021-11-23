@@ -6,8 +6,11 @@ const MealPlan = require("./MealPlan");
 const Recipe = require("./Recipe");
 const User = require("./User");
 
-//user has one workout plan
-
+//user has one fitness plan
+User.hasOne(FitnessPlan, {
+  foreignKey: "driver_id",
+  onDelete: "CASCADE",
+});
 //user has one meal plan
 
 //fitnessplan has many workouts
