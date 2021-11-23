@@ -16,6 +16,7 @@ User.hasOne(FitnessPlan, {
 //fitnessplan has many workouts
 
 //fitnessplan has one meal plan
+//I think these should be separate
 
 //workout has many exercises
 
