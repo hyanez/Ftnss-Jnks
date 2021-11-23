@@ -1,0 +1,14 @@
+* {
+  font-size: 16px;
+}
+
+.login-container {
+  border-style: solid;
+  border-width: 2px;
+  border-color: blue;
+  padding: 50px;
+  flex-shrink: 1 1 1;
+  margin-top: 2rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+}
