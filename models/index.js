@@ -11,11 +11,13 @@ const Recipe = require("./Recipe");
 //   foreignKey: "fitnessPlan_id",
 //   onDelete: "CASCADE",
 // });
+
 //user has one meal plan
-User.hasOne(MealPlan, {
+MealPlan.belongsTo(User, {
   foreignKey: "mealPlan_id",
   onDelete: "CASCADE",
 });
+
 //fitnessplan has many workouts
 
 //workout has many exercises
@@ -24,9 +26,8 @@ User.hasOne(MealPlan, {
 
 //meal plan has many recipes
 MealPlan.hasMany(Recipe, {
-  foreignKey: "recipe_id",
+  foreignKey: "mealPlan_id",
   onDelete: "CASCADE",
 });
-//recipes has many ingridients (might not need an ingridient model depeding on how we set up an api that gives us recipes)
 
 module.exports = { FitnessPlan, Workout, Exercise, MealPlan, Recipe, User };

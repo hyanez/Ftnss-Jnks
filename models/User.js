@@ -43,13 +43,13 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    mealPlan_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "MealPlan",
-        key: "id",
-      },
-    },
+    // mealPlan_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "mealplan",
+    //     key: "id",
+    //   },
+    // },
     // fitnessPlan_id: {
     //   type: DataTypes.INTEGER,
     //   references: {

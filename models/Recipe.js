@@ -22,10 +22,10 @@ Recipe.init(
         isUrl: true,
       },
     },
-    mealplan_id: {
+    mealPlan_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "mealplan",
+        model: "recipe",
         key: "id",
       },
     },
