@@ -29,10 +29,12 @@ User.init(
         len: 10,
       },
     },
+    //in inches
     height: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    //in pounds
     weight: {
       type: DataTypes.INTEGER,
       allowNull: false,
