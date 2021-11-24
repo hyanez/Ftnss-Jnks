@@ -1,0 +1,14 @@
+[
+  {
+    "plan_name": "muscle-building-meals",
+    "recipe-count": 5
+  },
+  {
+    "plan_name": "cardio-focused-meals",
+    "recipe-count": 6
+  },
+  {
+    "plan_name": "mixed-workouts-meals",
+    "recipe-count": 2
+  }
+]
