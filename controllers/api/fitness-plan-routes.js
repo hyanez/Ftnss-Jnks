@@ -27,8 +27,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET /api/fitnessplan/id
-// GET a fitness plan
+// GET /api/fitnessplan/:id
+// GET a fitness plan by id
 router.get("/:id", async (req, res) => {
   try {
     const fitnessData = await FitnessPlan.findOne({
@@ -84,7 +84,7 @@ router.delete("/:id", async (req, res) => {
     });
 
     if (!fitnessData) {
-      res.status(404).json({ message: "No User found with this id!" });
+      res.status(404).json({ message: "No Fitness Plan found with this id!" });
       return;
     }
 
