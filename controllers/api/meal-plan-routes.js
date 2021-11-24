@@ -75,4 +75,25 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// DELETE /api/mealplan/:id
+// DELETE a meal plan by id
+router.delete("/:id", async (req, res) => {
+  try {
+    const mealData = await MealPlan.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!mealData) {
+      res.status(404).json({ message: "No Fitness Plan found with this id!" });
+      return;
+    }
+
+    res.status(200).json(mealData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

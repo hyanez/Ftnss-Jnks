@@ -75,6 +75,8 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// DELETE /api/fitnessplan/:id
+// DELETE a fitness plan by id
 router.delete("/:id", async (req, res) => {
   try {
     const fitnessData = await FitnessPlan.destroy({
