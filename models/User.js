@@ -50,13 +50,13 @@ User.init(
         key: "id",
       },
     },
-    fitnessPlan_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "FitnessPlan",
-        key: "id",
-      },
-    },
+    // fitnessPlan_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "FitnessPlan",
+    //     key: "id",
+    //   },
+    // },
   },
   {
     sequelize,

@@ -21,25 +21,23 @@ const seedDatabase = async () => {
 
   const recipes = await Recipe.bulkCreate(recipeSeedData);
   //create mealplans at random
-
-  for (const { id } of readers) {
-    const newCard = await LibraryCard.create({
-      reader_id: id,
+  // const mealPlans = [];
+  for (const mealPlan of mealPlanSeedData) {
+    const newMealPlan = await MealPlan.create({
+      ...mealPlan,
+      recipe_id: recipes[Math.floor(Math.random() * recipes.length)],
     });
+    // mealPlans.push(newMealPlan);
   }
 
-  // Get a random recipe's `id`
-  const { id: randomRecipeId } =
-    recipes[Math.floor(Math.random() * recipes.length)];
-
-  // await MealPlan.create({
-  //   plan_name: "healthy recipes",
-  //   recipe_count: 1,
-  //   recipe_id: randomRecipeId,
-  // }).catch((err) => {
-  //   // If there's an error, such as the same random pairing of `traveller.id` and `location.id` occurring and we get a constraint error, don't quit the Node process
-  //   console.log(err);
-  // });
+  for (const user of userSeedData) {
+    let i = 0;
+    const newUser = await User.create({
+      ...user,
+      mealPlan_id: i,
+    });
+    i++;
+  }
 
   process.exit(0);
 };
