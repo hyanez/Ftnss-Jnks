@@ -18,6 +18,9 @@
   {
     "username": "Amiko",
     "email": "amiko2k20@aol.com",
-    "password": "thispass34"
+    "password": "thispass34",
+    "height": 65,
+    "weight": 120,
+    "age": 16
   }
 ]
