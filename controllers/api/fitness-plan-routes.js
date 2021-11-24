@@ -47,8 +47,29 @@ router.get("/:id", async (req, res) => {
 // CREATE a new fitness plan
 router.post("/", async (req, res) => {
   try {
-    const userData = await User.create(req.body);
-    res.status(200).json(userData);
+    const fitnessData = await FitnessPlan.create(req.body);
+    res.status(200).json(fitnessData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// PUT /api/fitnessplan/:id
+// UPDATE a fitness plan by id
+router.put("/:id", async (req, res) => {
+  try {
+    const fitnessData = await FitnessPlan.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!fitnessData) {
+      res.status(404).json({ message: "No Fitness Plan found with this id!" });
+      return;
+    }
+
+    res.status(200).json(fitnessData);
   } catch (err) {
     res.status(500).json(err);
   }

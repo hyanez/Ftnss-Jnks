@@ -42,7 +42,6 @@ router.post("/", async (req, res) => {
 // PUT /api/users/:id
 // UPDATE a user
 router.put("/:id", async (req, res) => {
-  // update a tag's name by its `id` value
   try {
     const userData = await User.update(req.body, {
       where: {
