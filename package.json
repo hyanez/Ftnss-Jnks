@@ -1,7 +1,6 @@
 {
   "name": "fitness-junkies",
   "version": "1.0.1",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,5 +23,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyanez/Ftnss-Jnks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hyanez/Ftnss-Jnks/issues"
+  },
+  "homepage": "https://github.com/hyanez/Ftnss-Jnks#readme",
+  "description": ""
 }
