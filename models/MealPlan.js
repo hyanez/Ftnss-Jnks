@@ -32,7 +32,6 @@ MealPlan.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    //TODO: Update model name
     modelName: "mealplan",
   }
 );
