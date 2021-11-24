@@ -7,15 +7,15 @@ const Recipe = require("./Recipe");
 const User = require("./User");
 
 //user has one fitness plan
-User.hasOne(FitnessPlan, {
-  foreignKey: "user_id",
-  onDelete: "CASCADE",
-});
+// User.hasOne(FitnessPlan, {
+//   foreignKey: "user_id",
+//   onDelete: "CASCADE",
+// });
 //user has one meal plan
-User.hasOne(MealPlan, {
-  foreignKey: user_id,
-  onDelete: "CASCADE",
-});
+// User.hasOne(MealPlan, {
+//   foreignKey: user_id,
+//   onDelete: "CASCADE",
+// });
 
 //fitnessplan has many workouts
 // FitnessPlan.hasMany(Workout, {
