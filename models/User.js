@@ -26,7 +26,7 @@ User.init(
     password: {
       type: DataTypes.STRING,
       validate: {
-        len: 10,
+        len: [10],
       },
     },
     //in inches
