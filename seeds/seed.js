@@ -19,17 +19,27 @@ const recipeSeedData = require("./recipeSeedData.json");
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const users = await User.bulkCreate(userSeedData);
-
-  const fitnessPlans = await FitnessPlan.bulkCreate(fitnessPlanSeedData);
-
-  const mealPlans = await MealPlan.bulkCreate(mealPlanSeedData);
-
-  const workouts = await Workout.bulkCreate(workoutSeedData);
-
-  const exercises = await Exercise.bulkCreate(exerciseSeedData);
-
   const recipes = await Recipe.bulkCreate(recipeSeedData);
+  //create mealplans at random
+
+  for (const { id } of readers) {
+    const newCard = await LibraryCard.create({
+      reader_id: id,
+    });
+  }
+
+  // Get a random recipe's `id`
+  const { id: randomRecipeId } =
+    recipes[Math.floor(Math.random() * recipes.length)];
+
+  // await MealPlan.create({
+  //   plan_name: "healthy recipes",
+  //   recipe_count: 1,
+  //   recipe_id: randomRecipeId,
+  // }).catch((err) => {
+  //   // If there's an error, such as the same random pairing of `traveller.id` and `location.id` occurring and we get a constraint error, don't quit the Node process
+  //   console.log(err);
+  // });
 
   process.exit(0);
 };

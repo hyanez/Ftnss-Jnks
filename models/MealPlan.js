@@ -19,10 +19,10 @@ MealPlan.init(
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    user_id: {
+    recipe_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
+        model: "recipe",
         key: "id",
       },
     },
