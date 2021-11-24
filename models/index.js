@@ -23,7 +23,7 @@ User.hasOne(MealPlan, {
 //exercises belong to workout
 
 //meal plan has many recipes
-Reader.hasMany(Recipe, {
+MealPlan.hasMany(Recipe, {
   foreignKey: "recipe_id",
   onDelete: "CASCADE",
 });

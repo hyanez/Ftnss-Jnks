@@ -21,20 +21,22 @@ const seedDatabase = async () => {
 
   const recipes = await Recipe.bulkCreate(recipeSeedData);
   //create mealplans at random
-  const mealPlans = [];
+  // const mealPlans = [];
   for (const mealPlan of mealPlanSeedData) {
     const newMealPlan = await MealPlan.create({
       ...mealPlan,
       recipe_id: recipes[Math.floor(Math.random() * recipes.length)],
     });
-    mealPlans.push(newMealPlan);
+    // mealPlans.push(newMealPlan);
   }
 
   for (const user of userSeedData) {
+    let i = 0;
     const newUser = await User.create({
       ...user,
-      mealPlan_id: mealPlans[Math.floor(Math.random() * mealPlans.length)],
+      mealPlan_id: i,
     });
+    i++;
   }
 
   process.exit(0);
