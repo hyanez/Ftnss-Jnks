@@ -26,7 +26,7 @@ User.init(
     password: {
       type: DataTypes.STRING,
       validate: {
-        len: 10,
+        len: [10],
       },
     },
     //in inches
@@ -43,6 +43,20 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    mealPlan_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "MealPlan",
+        key: "id",
+      },
+    },
+    // fitnessPlan_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "FitnessPlan",
+    //     key: "id",
+    //   },
+    // },
   },
   {
     sequelize,

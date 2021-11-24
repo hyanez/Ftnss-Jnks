@@ -15,13 +15,6 @@ Exercise.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    workout_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "workout",
-        key: "id",
-      },
-    },
   },
   {
     sequelize,

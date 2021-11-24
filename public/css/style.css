@@ -1,5 +1,11 @@
 * {
   font-size: 16px;
+  font-family: "Righteous", cursive;
+}
+
+#navbar-title {
+  font-size: 200%;
+  margin-right: 100px;
 }
 
 #nav-links {
@@ -10,11 +16,11 @@
 #navbar {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   border-style: solid;
-  border-width: 2px;
-  border-color: navy;
+  border-width: 10px;
+  border-color: rgb(0, 0, 0);
   padding: 2rem;
-  background-color: blue;
 }
 
 h1 {
@@ -33,5 +39,15 @@ h1 {
 }
 
 #main {
-  background-color: grey;
+  background-image: url(https://i.pinimg.com/originals/29/ed/4b/29ed4b538405dccccb376e22ca349590.jpg);
+}
+
+#homepage-welcome {
+  background-color: white;
+  border-radius: 20px 20px 20px 20px;
+  margin-top: 5rem;
+  text-align: center;
+  width: fit-content;
+  padding: 30px;
+  box-shadow: 5px 10px #464646;
 }
