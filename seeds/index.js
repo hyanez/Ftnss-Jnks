@@ -1,6 +1,6 @@
-const seedUsers = require("./category-seeds");
+const seedUsers = require("./userSeedData");
 const seedFitnessPlans = require("./product-seeds");
-const seedMealPlans = require("./tag-seeds");
+const seedMealPlans = require("./mealPlanSeedData");
 const seedWorkouts = require("./product-tag-seeds");
 const seedExercises = require("./tag-seeds");
 const seedRecipes = require("./product-tag-seeds");
@@ -10,11 +10,11 @@ const sequelize = require("../config/connection");
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log("\n----- DATABASE SYNCED -----\n");
-  await seedCategories();
-  console.log("\n----- CATEGORIES SEEDED -----\n");
+  await seedUsers();
+  console.log("\n----- USERS SEEDED -----\n");
 
-  await seedProducts();
-  console.log("\n----- PRODUCTS SEEDED -----\n");
+  await seedMealPlans();
+  console.log("\n----- MEAL PLANS SEEDED -----\n");
 
   await seedTags();
   console.log("\n----- TAGS SEEDED -----\n");
