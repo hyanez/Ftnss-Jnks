@@ -1,9 +1,9 @@
 const seedUsers = require("./userSeedData");
-const seedFitnessPlans = require("./product-seeds");
 const seedMealPlans = require("./mealPlanSeedData");
+const seedRecipes = require("./recipeSeedData");
+const seedFitnessPlans = require("./product-seeds");
 const seedWorkouts = require("./product-tag-seeds");
 const seedExercises = require("./tag-seeds");
-const seedRecipes = require("./product-tag-seeds");
 
 const sequelize = require("../config/connection");
 
@@ -16,11 +16,16 @@ const seedAll = async () => {
   await seedMealPlans();
   console.log("\n----- MEAL PLANS SEEDED -----\n");
 
-  await seedTags();
-  console.log("\n----- TAGS SEEDED -----\n");
+  await seedRecipes();
+  console.log("\n----- RECIPES SEEDED -----\n");
 
-  await seedProductTags();
-  console.log("\n----- PRODUCT TAGS SEEDED -----\n");
+  await seedFitnessPlans();
+  console.log("\n----- FITNESS PLANS SEEDED -----\n");
+
+  await seedWorkouts();
+  console.log("\n----- WORKOUTS SEEDED -----\n");
+  await seedExercises();
+  console.log("\n----- EXERCISES SEEDED -----\n");
 
   process.exit(0);
 };
