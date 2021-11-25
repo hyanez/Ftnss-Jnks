@@ -2,8 +2,8 @@ const seedUsers = require("./userSeedData");
 const seedMealPlans = require("./mealPlanSeedData");
 const seedRecipes = require("./recipeSeedData");
 const seedFitnessPlans = require("./fitnessPlanSeedData");
-const seedWorkouts = require("./product-tag-seeds");
-const seedExercises = require("./tag-seeds");
+const seedWorkouts = require("./workoutSeedData");
+const seedExercises = require("./exerciseSeedData");
 
 const sequelize = require("../config/connection");
 
