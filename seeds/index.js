@@ -24,6 +24,7 @@ const seedAll = async () => {
 
   await seedWorkouts();
   console.log("\n----- WORKOUTS SEEDED -----\n");
+
   await seedExercises();
   console.log("\n----- EXERCISES SEEDED -----\n");
 
