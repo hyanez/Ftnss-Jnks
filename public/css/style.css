@@ -39,7 +39,8 @@ h1 {
 }
 
 #main {
-  background-image: url(https://i.pinimg.com/originals/29/ed/4b/29ed4b538405dccccb376e22ca349590.jpg);
+  background: url(https://i.pinimg.com/originals/29/ed/4b/29ed4b538405dccccb376e22ca349590.jpg)
+    fixed center;
 }
 
 #homepage-welcome {
