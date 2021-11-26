@@ -6,16 +6,27 @@ var recipeBtn = document.querySelector("#recipe");
 recipeBtn.addEventListener("click", getRecipe);
 
 function getRandomIngridient() {
-  var ingridientList = [];
-  var ingridient = "";
+  var ingridientList = [
+    "chicken",
+    "pork",
+    "beef",
+    "eggs",
+    "salmon",
+    "tilapia",
+    "fish",
+    "tomatoes",
+  ];
+  var i = Math.floor(Math.random() * (ingridientList.length - 1));
+  var ingridient = ingridientList[i];
+  return ingridient;
 }
 
 function getRecipe() {
-  var query = "chicken";
+  var keyword = getRandomIngridient();
   var dietSelector = "high-protein";
   var edRequestURL =
     "https://api.edamam.com/api/recipes/v2?type=public&q=" +
-    query +
+    keyword +
     "&app_id=" +
     edAppId +
     "&app_key=" +
