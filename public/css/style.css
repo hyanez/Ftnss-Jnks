@@ -62,3 +62,25 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
+#fitnessplan-nav {
+  background-color: white;
+  border-radius: 20px 20px 20px 20px;
+  margin-top: 5rem;
+  text-align: center;
+  padding: 30px;
+  box-shadow: 5px 10px #464646;
+  flex-shrink: 1 1 1;
+  margin-bottom: 5rem;
+}
+
+#fitnessplan-page {
+  margin-bottom: 5rem;
+}
+
+.card {
+  text-align: center;
+  width: fit-content;
+  padding: 30px;
+  box-shadow: 5px 10px #464646;
+}
