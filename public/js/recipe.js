@@ -45,7 +45,7 @@ function getRecipe() {
     edApiKey +
     "&diet=" +
     dietSelector;
-  //   var edRequestURL =
+  //   var exampleURL =
   //     "https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=6514ecc7&app_key=%20acbc552b3d19b454a25e304e3010ca7e&diet=high-protein";
   $.ajax({
     url: edRequestURL,
