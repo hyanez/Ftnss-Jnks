@@ -28,14 +28,15 @@ h1 {
 }
 
 .login-container {
-  border-style: solid;
-  border-width: 2px;
-  border-color: blue;
-  padding: 50px;
+  background-color: white;
+  border-radius: 20px 20px 20px 20px;
+  margin-top: 5rem;
+  text-align: center;
+  padding: 30px;
+  box-shadow: 5px 10px #464646;
   flex-shrink: 1 1 1;
-  margin-top: 2rem;
-  margin-left: 8rem;
-  margin-right: 8rem;
+  width: 600px;
+  margin-bottom: 5rem;
 }
 
 #main {
@@ -55,4 +56,9 @@ h1 {
 
 .form-group {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+#body {
+  display: flex;
+  justify-content: center;
 }
