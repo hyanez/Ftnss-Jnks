@@ -15,6 +15,18 @@ function getRandomIngridient() {
     "tilapia",
     "fish",
     "tomatoes",
+    "potatoes",
+    "ginger",
+    "peppers",
+    "rice",
+    "avocado",
+    "beans",
+    "corn",
+    "spinach",
+    "pasta",
+    "onions",
+    "garlic",
+    "scallops",
   ];
   var i = Math.floor(Math.random() * (ingridientList.length - 1));
   var ingridient = ingridientList[i];
