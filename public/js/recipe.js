@@ -2,41 +2,32 @@
 const edApiKey = process.env.Ed_APIKey;
 const edAppId = process.env.Ed_AppID;
 
-// ("https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free");
+var recipeBtn = document.querySelector("#recipe");
+recipeBtn.addEventListener("click", getRecipe);
+
+function getRandomIngridient() {
+  var ingridientList = [];
+  var ingridient = "";
+}
 
 function getRecipe() {
-  console.log("there was a click");
-  alert("function is running");
   var query = "chicken";
   var dietSelector = "high-protein";
   var edRequestURL =
-    " https://api.edamam.com/api/recipes/v2/search?q=" +
+    "https://api.edamam.com/api/recipes/v2?type=public&q=" +
     query +
     "&app_id=" +
     edAppId +
     "&app_key=" +
     edApiKey +
-    "&diet+" +
+    "&diet=" +
     dietSelector;
+  //   var edRequestURL =
+  //     "https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=6514ecc7&app_key=%20acbc552b3d19b454a25e304e3010ca7e&diet=high-protein";
   $.ajax({
     url: edRequestURL,
     method: "GET",
   }).then(function (response) {
     console.log(response);
   });
-
-  //   fetch(edRequestURL)
-  //     .then(function (response) {
-  //       console.log("response" + response);
-  //       return response.json();
-  //     })
-  //     .then(function (data) {
-  //       console.log("data" + data);
-  //     });
 }
-
-// getRecipe();
-
-document
-  .querySelector(".mealplan")
-  .addEventListener("submit", loginFormHandler);
