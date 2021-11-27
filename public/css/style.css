@@ -42,6 +42,7 @@ h1 {
 #main {
   background: url(https://i.pinimg.com/originals/29/ed/4b/29ed4b538405dccccb376e22ca349590.jpg)
     fixed center;
+  backdrop-filter: blur(7px);
 }
 
 #homepage-welcome {
@@ -82,5 +83,5 @@ h1 {
   text-align: center;
   width: fit-content;
   padding: 30px;
-  box-shadow: 5px 10px #464646;
+  box-shadow: 5px 10px #a1a1a1;
 }
