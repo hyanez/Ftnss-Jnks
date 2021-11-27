@@ -21,7 +21,7 @@
   border-style: solid;
   border-width: 10px;
   border-color: navy;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 h1 {
@@ -97,5 +97,10 @@ h1 {
 }
 
 #sign-up {
+  color: navy;
+}
+
+#nav-btn:hover {
+  transition: 1.3s;
   color: navy;
 }
