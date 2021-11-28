@@ -1,8 +1,10 @@
 const calculate = require("fitness-health-calculations");
+const helper = require("../../utils/helpers");
 
 const health = {
   username: "",
   height: 0,
+  formatHeight: "",
   weight: 0,
   age: 0,
   bmr: 0,
@@ -76,11 +78,7 @@ let calNeedGain = calculate.caloricNeeds(
 );
 health.calNeedGain = calNeedGain;
 console.log(health.calNeedGain);
-
-function idealBodyWEight() {
-  //idealBodyWeight(height, gender, units[optional])
-  console.log(idealWeight);
-}
+health.formatHeight = helper.format_height(health.height);
 
 console.log(health);
 module.exports = health;
