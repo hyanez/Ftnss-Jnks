@@ -13,6 +13,7 @@ User.init(
     },
     username: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -26,7 +27,7 @@ User.init(
     password: {
       type: DataTypes.STRING,
       validate: {
-        len: [10],
+        len: [4],
       },
     },
     //in inches
@@ -41,6 +42,10 @@ User.init(
     },
     age: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    gender: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
