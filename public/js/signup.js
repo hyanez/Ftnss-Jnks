@@ -5,6 +5,8 @@ const signupFormHandler = async (event) => {
   const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
   const height = document.querySelector("#height-signup").value.trim();
+  const weight = document.querySelector("#height-signup").value.trim();
+  const age = document.querySelector("#age-signup").value.trim();
 
   if (username && email && password.length > 4 && height) {
     const response = await fetch("/api/users", {
