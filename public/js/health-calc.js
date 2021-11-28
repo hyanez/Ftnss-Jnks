@@ -7,6 +7,8 @@ const health = {
   age: 0,
   bmr: 0,
   tdee: 0,
+  calNeedReduc: 0,
+  calNeedGain: 0,
 };
 
 const exampleUser = {
@@ -19,6 +21,11 @@ const exampleUser = {
   age: 25,
   gender: "male",
 };
+
+health.username = exampleUser.username;
+health.height = exampleUser.height;
+health.weight = exampleUser.weight;
+health.age = exampleUser.age;
 
 exampleUser.height = exampleUser.height * 0.8333333333;
 
@@ -47,14 +54,33 @@ let tdee = calculate.tdee(
 health.tdee = tdee;
 console.log(health.tdee);
 
-function getCaloricNeed() {
-  //caloricNeeds(gender, age, height, weight, activity_level, goal, approach)
-  console.log(calNeed);
-}
+//caloricNeeds(gender, age, height, weight, activity_level, goal, approach)
+let calNeedReduc = calculate.caloricNeeds(
+  exampleUser.gender,
+  exampleUser.age,
+  exampleUser.height,
+  exampleUser.weight,
+  "moderate",
+  "reduction"
+);
+health.calNeedReduc = calNeedReduc;
+console.log(health.calNeedReduc);
+
+let calNeedGain = calculate.caloricNeeds(
+  exampleUser.gender,
+  exampleUser.age,
+  exampleUser.height,
+  exampleUser.weight,
+  "moderate",
+  "gain"
+);
+health.calNeedGain = calNeedGain;
+console.log(health.calNeedGain);
 
 function idealBodyWEight() {
   //idealBodyWeight(height, gender, units[optional])
   console.log(idealWeight);
 }
 
+console.log(health);
 module.exports = health;
