@@ -14,13 +14,13 @@ const health = {
 };
 
 const exampleUser = {
-  id: 1,
-  username: "Sal",
-  email: "sal@hotmail.com",
-  password: "safepass12",
-  height: 70,
-  weight: 155,
-  age: 25,
+  id: 2,
+  username: "Lernantino",
+  email: "lernantino@gmail.com",
+  password: "password10",
+  height: 77,
+  weight: 210,
+  age: 30,
   gender: "male",
 };
 
