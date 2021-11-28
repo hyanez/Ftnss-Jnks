@@ -1,41 +1,50 @@
 <div id="fitnessplan-page" class="column">
 
-  <div id="fitnessplan-nav" class="conatiner">
-    <h1>
-      Fitness Plan Nav
-    </h1>
+  {{#if username}}
+    <div id="fitnessplan-nav" class="conatiner">
+      <h1>
+        Understanding Your Health:
+        {{username}}
+      </h1>
 
-  </div>
-
-  <div class="card-deck">
-    <div class="card" style="width: 18rem;">
-
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title
-          and make up the bulk of the card's content.</p>
-        <a id="button" href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title
-          and make up the bulk of the card's content.</p>
-        <a id="button" href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title
-          and make up the bulk of the card's content.</p>
-        <a id="button" href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
     </div>
 
-  </div>
+    <div class="card-deck">
+      <div class="card" style="width: 18rem;">
 
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card
+            title and make up the bulk of the card's content.</p>
+          <a id="button" href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card
+            title and make up the bulk of the card's content.</p>
+          <a id="button" href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card
+            title and make up the bulk of the card's content.</p>
+          <a id="button" href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+    </div>
+
+  {{else}}
+    <div id="fitnessplan-nav" class="conatiner">
+      <h1>
+        Login for More Info
+      </h1>
+    </div>
+  {{/if}}
 </div>

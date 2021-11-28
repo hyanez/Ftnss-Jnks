@@ -21,7 +21,17 @@ router.get("/signup", async (req, res) => {
 });
 
 router.get("/health", async (req, res) => {
-  res.render("health");
+  res.render("health", Sal);
 });
+
+const Sal = {
+  id: 1,
+  username: "Sal",
+  email: "sal@hotmail.com",
+  password: "safepass12",
+  height: 70,
+  weight: 155,
+  age: 25,
+};
 
 module.exports = router;
