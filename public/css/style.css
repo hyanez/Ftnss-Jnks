@@ -6,6 +6,7 @@
 #navbar-title {
   font-size: 200%;
   margin-right: 100px;
+  color: navy;
 }
 
 #nav-links {
@@ -19,8 +20,8 @@
   flex-wrap: wrap;
   border-style: solid;
   border-width: 10px;
-  border-color: rgb(0, 0, 0);
-  padding: 2rem;
+  border-color: navy;
+  padding: 1rem;
 }
 
 h1 {
@@ -33,7 +34,7 @@ h1 {
   margin-top: 5rem;
   text-align: center;
   padding: 30px;
-  box-shadow: 5px 10px #464646;
+  box-shadow: 10px 10px navy;
   flex-shrink: 1 1 1;
   width: 600px;
   margin-bottom: 5rem;
@@ -42,6 +43,7 @@ h1 {
 #main {
   background: url(https://i.pinimg.com/originals/29/ed/4b/29ed4b538405dccccb376e22ca349590.jpg)
     fixed center;
+  backdrop-filter: blur(7px);
 }
 
 #homepage-welcome {
@@ -51,7 +53,7 @@ h1 {
   text-align: center;
   width: fit-content;
   padding: 30px;
-  box-shadow: 5px 10px #464646;
+  box-shadow: 10px 10px navy;
 }
 
 .form-group {
@@ -69,7 +71,7 @@ h1 {
   margin-top: 5rem;
   text-align: center;
   padding: 30px;
-  box-shadow: 5px 10px #464646;
+  box-shadow: 10px 10px navy;
   flex-shrink: 1 1 1;
   margin-bottom: 5rem;
 }
@@ -82,5 +84,23 @@ h1 {
   text-align: center;
   width: fit-content;
   padding: 30px;
-  box-shadow: 5px 10px #464646;
+  box-shadow: 10px 10px navy;
+}
+
+.btn {
+  background-color: navy;
+}
+
+#button {
+  background-color: navy;
+  color: white;
+}
+
+#sign-up {
+  color: navy;
+}
+
+#nav-btn:hover {
+  transition: 1.3s;
+  color: navy;
 }
