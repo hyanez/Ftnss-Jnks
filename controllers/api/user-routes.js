@@ -21,11 +21,11 @@ router.get("/:id", async (req, res) => {
         id: req.params.id,
       },
     });
+    d;
     if (userData) res.status(200).json(userData);
     else res.status(404).json({ message: "User does not exist" });
   } catch (err) {
     res.status(500).json(err);
-    console.log(err);
   }
 });
 
@@ -114,7 +114,7 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    const validPassword = await dbUserData.checkPassword(req.body.password);
+    const validPassword = dbUserData.validatePassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -124,11 +124,11 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.save(() => {
+      req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
-
-      res
-        .status(200)
-        .json({ user: dbUserData, message: "You are now logged in!" });
+      console.log("this" + req.session.loggedIn);
+      console.log("you are logged in");
+      res.status(200).send("logged in");
     });
   } catch (err) {
     console.log(err);
