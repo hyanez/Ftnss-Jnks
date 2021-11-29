@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 // GET one user
 router.get("/:id", async (req, res) => {
   try {
-    const userData = await User.findOne({
+    const userData = await User.findOnel({
       where: {
         id: req.params.id,
       },
@@ -25,7 +25,6 @@ router.get("/:id", async (req, res) => {
     else res.status(404).json({ message: "User does not exist" });
   } catch (err) {
     res.status(500).json(err);
-    console.log(err);
   }
 });
 
@@ -113,27 +112,23 @@ router.post("/login", async (req, res) => {
         .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
-    let validPassword;
-    if ((dbUserData.password = req.body.password)) {
-      validPassword = true;
-    } else {
-      validPassword = false;
-    }
+
+    const validPassword = dbUserData.validatePassword(req.body.password);
+
     if (!validPassword) {
       res
         .status(400)
         .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
-    if (validPassword === true) {
-      req.session.save(() => {
-        req.session.loggedIn = true;
 
-        res
-          .status(200)
-          .json({ user: dbUserData, message: "You are now logged in!" });
-      });
-    }
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.loggedIn = true;
+      console.log("this" + req.session.loggedIn);
+      console.log("you are logged in");
+      res.status(200).send("logged in");
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
