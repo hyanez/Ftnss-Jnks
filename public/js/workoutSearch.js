@@ -1,13 +1,16 @@
-const workoutList = document.getElementById('charactersList');
+const workoutList = document.getElementById('workoutList');
 const searchBar = document.getElementById('searchBar');
-const exercises = require('.../seeds/exercises.json')
+const data = require('/json/exercises.json');
+console.log(data);
 let woRoutines = [];
+
+console.log('test');
 
 
 searchBar.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase();
 
-    const filteredExercises = woRoutines.filter((exercies) => {
+    const filteredExercises = woRoutines.filter((exercises) => {
         return (
             exercises.name.toLowerCase().includes(searchString) ||
             exercises.house.toLowerCase().includes(searchString)
@@ -16,13 +19,29 @@ searchBar.addEventListener('keyup', (e) => {
     displayWorkouts(filteredExercises);
 });
 
-const displayWorkouts = (exercies) => {
-    const htmlString = characters
-        .map((exercies) => {
+const loadWorkouts = async () => {
+    try {
+        const res = await fetch('/json/exercises.json');
+        woRoutines = await res.json();
+        displayWorkouts(woRoutines);
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+const displayWorkouts = (exercises) => {
+    const htmlString = exercises
+        .map((exercises) => {
             return `
-            <li class="character">
+            <li class="workout">
                 <h2>${exercises.name}</h2>
-                <p>Muscle Group: ${character.house}</p>
+                <p>Muscle Group: ${exercises.primaryMuscles}</p>
+                <p>Force: ${exercises.force}</p>
+                <p>Level: ${exercises.level}</p>
+                <p>Equipment: ${exercises.equipment}</p>
+                <p></p>
+                <p>Instructions: ${exercises.instructions}</p>
+                
             </li>
         `;
         })
@@ -32,4 +51,4 @@ const displayWorkouts = (exercies) => {
 
 
 
-loadCharacters();
+loadWorkouts();
