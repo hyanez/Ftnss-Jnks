@@ -1,6 +1,6 @@
 <div id="fitnessplan-page" class="column">
 
-  {{#if loggedIn}}
+  {{#if username}}
     <div id="fitnessplan-nav" class="conatiner">
       <h1>
         Understanding Your Health:
@@ -61,7 +61,7 @@
           <h5>To Lose Weight: {{calNeedReduc}} Calories</h5>
           <h5>To Gain Weight: {{calNeedGain}} Calories</h5>
           <p class="card-text">Caloric Need shows how many calories you need to
-            consume daily to either gain or lose weight with moderate exercise.
+            consume dailey to either gain or lose weight with moderate exercise.
             To maintain weight you should consume calories equal to your TDEE</p>
           <a
             id="button"
@@ -79,7 +79,6 @@
       <h1>
         Login for More Info
       </h1>
-      <a href="/login">Click here to Login</a>
     </div>
   {{/if}}
 </div>
