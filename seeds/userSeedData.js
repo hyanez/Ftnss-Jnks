@@ -8,6 +8,7 @@ const userData = [
     height: 70,
     weight: 155,
     age: 25,
+    gender: "male",
   },
   {
     username: "Lernantino",
@@ -16,6 +17,7 @@ const userData = [
     height: 77,
     weight: 210,
     age: 30,
+    gender: "male",
   },
   {
     username: "Amiko",
@@ -24,6 +26,7 @@ const userData = [
     height: 65,
     weight: 120,
     age: 16,
+    gender: "female",
   },
 ];
 
