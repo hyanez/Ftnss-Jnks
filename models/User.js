@@ -26,6 +26,7 @@ User.init(
     },
     email: {
       type: DataTypes.STRING,
+      allowNull: false,
       // prevents duplicate email addresses in DB
       unique: true,
       // checks for email format (foo@bar.com)
@@ -35,6 +36,7 @@ User.init(
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         len: [4],
       },
