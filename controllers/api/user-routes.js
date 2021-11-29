@@ -134,6 +134,19 @@ router.post("/login", async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+
+  router.post("/logout", (req, res) => {
+    console.log("this is within the user routes");
+    if (req.session.loggedIn) {
+      // Remove the session variables
+      req.session.destroy(() => {
+        res.status(204).end();
+        console.log("this is after the destroy");
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
 });
 
 // Logout
