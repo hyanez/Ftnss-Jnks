@@ -31,10 +31,27 @@ router.get("/:id", async (req, res) => {
 // POST /api/users
 // CREATE a new user
 router.post("/", async (req, res) => {
+  console.log("this is the rec" + req);
   try {
-    const userData = await User.create(req.body);
-    res.status(200).json(userData);
+    var str = req.body.email;
+    str = str.substring(str.indexOf("@") + 1);
+    const dbUserData = await User.create({
+      username: str,
+      email: req.body.email,
+      password: req.body.password,
+      height: req.body.height,
+      weight: req.body.weight,
+      age: req.body.age,
+      gender: req.body.gender,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
