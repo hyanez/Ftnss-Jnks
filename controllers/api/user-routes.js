@@ -113,23 +113,27 @@ router.post("/login", async (req, res) => {
         .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
-
-    const validPassword = await dbUserData.checkPassword(req.body.password);
-
+    let validPassword;
+    if ((dbUserData.password = req.body.password)) {
+      validPassword = true;
+    } else {
+      validPassword = false;
+    }
     if (!validPassword) {
       res
         .status(400)
         .json({ message: "Incorrect email or password. Please try again!" });
       return;
     }
+    if (validPassword === true) {
+      req.session.save(() => {
+        req.session.loggedIn = true;
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res
-        .status(200)
-        .json({ user: dbUserData, message: "You are now logged in!" });
-    });
+        res
+          .status(200)
+          .json({ user: dbUserData, message: "You are now logged in!" });
+      });
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
