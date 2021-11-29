@@ -1,12 +1,12 @@
 <div id="fitnessplan-page" class="column">
 
-  <div id="fitnessplan-nav" class="conatiner">
+  <div id="fitnessplan-nav" class="container">
     <h1>
       Fitness Plan Nav
     </h1>
 
   </div>
-  {{#if x}}
+  {{#if loggedIn}}
     <div class="card-deck">
       <div class="card" style="width: 18rem;">
 
@@ -37,5 +37,12 @@
       </div>
 
     </div>
-  {{/if}}
 </div>
+{{else}}
+ <div id="fitnessplan-nav" class="conatiner">
+      <h1>
+        Login for More Info
+      </h1>
+      <a href="/login">Click here to Login</a>
+    </div>
+  {{/if}}
