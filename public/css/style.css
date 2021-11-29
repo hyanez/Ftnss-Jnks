@@ -123,3 +123,7 @@ h1 {
   align-items: center;
   gap: 2rem;
 }
+
+#recipes li {
+  margin-top: 20px;
+}

@@ -2,6 +2,8 @@
 const edApiKey = process.env.Ed_APIKey;
 const edAppId = process.env.Ed_AppID;
 
+var recipeList = document.getElementById("recipes");
+
 var recipeBtn = document.querySelector("#recipe");
 recipeBtn.addEventListener("click", getRecipe);
 
@@ -52,5 +54,12 @@ function getRecipe() {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    for (var i = 0; i < 1; i++) {
+      var fiveRecipes = document.createElement("li");
+      fiveRecipes.innerHTML = `${response.hits[i].recipe.label}
+        /// ${response.hits[i].recipe.dietLabels[0]} ///
+         '${response.hits[i].recipe.url}'`;
+      recipeList.appendChild(fiveRecipes);
+    }
   });
 }
