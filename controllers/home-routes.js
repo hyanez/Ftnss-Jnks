@@ -75,6 +75,7 @@ router.get("/health", withAuth, async (req, res) => {
     tdee: 0,
     calNeedReduc: 0,
     calNeedGain: 0,
+    loggedIn: true,
   };
 
   // const exampleUser = {
