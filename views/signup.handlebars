@@ -1,5 +1,6 @@
-<div class="login-container container">
-  <form class="signup-form">
+<div class="login-container container-fixed">
+  <h1>Enter Your Info Below:</h1>
+  <form id="user-form" class="signup-form">
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input
@@ -20,32 +21,43 @@
       />
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Height</label>
+      <label for="exampleInputHeight1">Height</label>
       <input
-        type="password"
+        type="number"
         class="form-control"
         id="height-signup"
-        placeholder="Password"
+        placeholder="Height in Inches"
       />
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Weight</label>
+      <label for="exampleInputWeight1">Weight</label>
       <input
-        type="password"
+        type="number"
         class="form-control"
         id="weight-signup"
-        placeholder="Password"
+        placeholder="Weight in Pounds"
       />
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Age</label>
+      <label for="exampleInputAge1">Age</label>
       <input
-        type="password"
+        type="number"
         class="form-control"
         id="age-signup"
-        placeholder="Password"
+        placeholder="Age"
       />
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div id="checklist" class="form-group">
+      <label>Gender</label><br />
+      <input type="radio" id="male" name="gender" value="Male" />
+       
+      <label for="male">Male</label><br />
+       
+      <input type="radio" id="female" name="gender" value="Female" />
+       
+      <label for="female">Female</label><br />
+    </div>
+    <button id="button" type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+<script src="/js/signup.js"></script>

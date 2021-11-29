@@ -19,10 +19,10 @@ Workout.init(
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    exercise_id: {
+    fitnessplan_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "Exercise",
+        model: "fitnessplan",
         key: "id",
       },
     },
