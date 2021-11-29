@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
         id: req.params.id,
       },
     });
-    d;
+
     if (userData) res.status(200).json(userData);
     else res.status(404).json({ message: "User does not exist" });
   } catch (err) {
@@ -47,6 +47,7 @@ router.post("/", async (req, res) => {
     });
 
     req.session.save(() => {
+      req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
 
       res.status(200).json(dbUserData);
