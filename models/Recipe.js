@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+require("dotenv").config();
 
 class Recipe extends Model {}
 
