@@ -1,10 +1,9 @@
 const workoutList = document.getElementById('workoutList');
 const searchBar = document.getElementById('searchBar');
 const data = require('/json/exercises.json');
-console.log(data);
 let woRoutines = [];
 
-console.log('test');
+console.log("test");
 
 
 searchBar.addEventListener('keyup', (e) => {
@@ -13,7 +12,7 @@ searchBar.addEventListener('keyup', (e) => {
     const filteredExercises = woRoutines.filter((exercises) => {
         return (
             exercises.name.toLowerCase().includes(searchString) ||
-            exercises.house.toLowerCase().includes(searchString)
+            exercises.primaryMuscles.toLowerCase().includes(searchString)
         );
     });
     displayWorkouts(filteredExercises);
@@ -21,7 +20,7 @@ searchBar.addEventListener('keyup', (e) => {
 
 const loadWorkouts = async () => {
     try {
-        const res = await fetch('/json/exercises.json');
+        const res = await fetch('./json/exercises.json');
         woRoutines = await res.json();
         displayWorkouts(woRoutines);
     } catch (err) {
