@@ -36,25 +36,6 @@ router.get("/login", async (req, res) => {
   res.render("login");
 });
 
-// router.get("/mealplan", withAuth, async (req, res) => {
-//   try {
-//     const userData = await User.findAll({
-//       attributes: { exclude: ["password"] },
-//       order: [["name", "ASC"]],
-//     });
-
-//     const users = userData.map((project) => project.get({ plain: true }));
-
-//     res.render("mealplan", {
-//       users,
-//       // Pass the logged in flag to the template
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 router.get("/mealplan", withAuth, async (req, res) => {
   res.render("mealplan", { loggedIn: req.session.loggedIn });
 });
@@ -77,17 +58,6 @@ router.get("/health", withAuth, async (req, res) => {
     calNeedGain: 0,
     loggedIn: true,
   };
-
-  // const exampleUser = {
-  //   id: 2,
-  //   username: "Lernantino",
-  //   email: "lernantino@gmail.com",
-  //   password: "password10",
-  //   height: 77,
-  //   weight: 210,
-  //   age: 30,
-  //   gender: "male",
-  // };
 
   const exampleUser = await User.findOne({
     where: {
