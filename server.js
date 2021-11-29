@@ -26,11 +26,14 @@ app.engine("handlebars", hbs.engine);
 //Lets express know that we want the view engine to be 'handlebars'
 app.set("view engine", "handlebars");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(routes);
 
 // Starts the server to begin listening
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
     console.log("Server listening on: http://localhost:" + PORT)
   );
