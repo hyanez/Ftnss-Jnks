@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 // GET one user
 router.get("/:id", async (req, res) => {
   try {
-    const userData = await User.findOnel({
+    const userData = await User.findOne({
       where: {
         id: req.params.id,
       },
@@ -25,6 +25,7 @@ router.get("/:id", async (req, res) => {
     else res.status(404).json({ message: "User does not exist" });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
