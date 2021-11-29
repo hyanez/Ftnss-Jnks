@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
         id: req.params.id,
       },
     });
-    d;
+
     if (userData) res.status(200).json(userData);
     else res.status(404).json({ message: "User does not exist" });
   } catch (err) {
@@ -47,6 +47,7 @@ router.post("/", async (req, res) => {
     });
 
     req.session.save(() => {
+      req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
 
       res.status(200).json(dbUserData);
@@ -114,7 +115,7 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    const validPassword = dbUserData.validatePassword(req.body.password);
+    const validPassword = await dbUserData.validatePassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -128,7 +129,7 @@ router.post("/login", async (req, res) => {
       req.session.loggedIn = true;
       console.log("this" + req.session.loggedIn);
       console.log("you are logged in");
-      res.status(200).send("logged in");
+      res.status(200).send("You are now logged in");
     });
   } catch (err) {
     console.log(err);
@@ -147,6 +148,17 @@ router.post("/login", async (req, res) => {
       res.status(404).end();
     }
   });
+});
+
+// Logout
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 });
 
 module.exports = router;
