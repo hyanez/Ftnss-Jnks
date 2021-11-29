@@ -42,7 +42,6 @@ let myBmr = calculate.bmr(
 );
 
 health.bmr = myBmr.toFixed(1);
-console.log(health.bmr);
 
 //calculates total daily energyh expenditure
 let tdee = calculate.tdee(
@@ -54,7 +53,6 @@ let tdee = calculate.tdee(
 );
 
 health.tdee = tdee;
-console.log(health.tdee);
 
 //caloricNeeds(gender, age, height, weight, activity_level, goal, approach)
 let calNeedReduc = calculate.caloricNeeds(
@@ -66,7 +64,6 @@ let calNeedReduc = calculate.caloricNeeds(
   "reduction"
 );
 health.calNeedReduc = calNeedReduc;
-console.log(health.calNeedReduc);
 
 let calNeedGain = calculate.caloricNeeds(
   exampleUser.gender,
@@ -77,8 +74,7 @@ let calNeedGain = calculate.caloricNeeds(
   "gain"
 );
 health.calNeedGain = calNeedGain;
-console.log(health.calNeedGain);
+
 health.formatHeight = helper.format_height(health.height);
 
-console.log(health);
 module.exports = health;

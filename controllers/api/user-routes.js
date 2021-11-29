@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../../models/User");
+const { User } = require("../../models");
 
 // GET /api/users
 // GET all users
@@ -33,9 +33,26 @@ router.get("/:id", async (req, res) => {
 // CREATE a new user
 router.post("/", async (req, res) => {
   try {
-    const userData = await User.create(req.body);
-    res.status(200).json(userData);
+    console.log(req.body);
+    var str = req.body.email;
+    str = str.substring(0, str.indexOf("@"));
+    const dbUserData = await User.create({
+      username: str,
+      email: req.body.email,
+      password: req.body.password,
+      height: req.body.height,
+      weight: req.body.weight,
+      age: req.body.age,
+      gender: req.body.gender,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -78,6 +95,43 @@ router.delete("/:id", async (req, res) => {
 
     res.status(200).json(userData);
   } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post("/login", async (req, res) => {
+  try {
+    const dbUserData = await User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+
+    if (!dbUserData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
+      return;
+    }
+
+    const validPassword = await dbUserData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password. Please try again!" });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res
+        .status(200)
+        .json({ user: dbUserData, message: "You are now logged in!" });
+    });
+  } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
