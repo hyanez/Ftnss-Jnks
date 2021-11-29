@@ -1,6 +1,6 @@
 <div class="login-container container-fixed">
   <h1>Enter Your Info Below:</h1>
-  <form class="signup-form">
+  <form id="user-form" class="signup-form">
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input
@@ -21,27 +21,27 @@
       />
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Height</label>
+      <label for="exampleInputHeight1">Height</label>
       <input
-        type="password"
+        type="number"
         class="form-control"
         id="height-signup"
         placeholder="Height in Inches"
       />
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Weight</label>
+      <label for="exampleInputWeight1">Weight</label>
       <input
-        type="password"
+        type="number"
         class="form-control"
         id="weight-signup"
         placeholder="Weight in Pounds"
       />
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Age</label>
+      <label for="exampleInputAge1">Age</label>
       <input
-        type="password"
+        type="number"
         class="form-control"
         id="age-signup"
         placeholder="Age"
@@ -60,3 +60,4 @@
     <button id="button" type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+<script src="/js/signup.js"></script>

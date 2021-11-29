@@ -33,9 +33,15 @@
           <li class="nav-item">
             <a id="nav-btn" class="nav-link" href="/Health"> Health </a>
           </li>
+          {{#if loggedIn}}
           <li class="nav-item">
+           <button class="btn" id="logout">Logout</button>
+          </li>
+          {{else}}
+           <li class="nav-item">
             <a id="nav-btn" class="nav-link" href="/login"> Login </a>
           </li>
+          {{/if}}
         </ul>
         
       </div>
@@ -44,7 +50,7 @@
   <main id="body" class="container container-fluid">
     {{{body}}}
   </main>
-  
+  <script src="/js/logout.js"></script>
 </body>
 
 </html>
