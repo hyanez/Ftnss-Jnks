@@ -7,6 +7,7 @@ const sequelize = require("./config/connection");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 const models = require("./models");
+require("dotenv").config();
 
 // Sets up the Express App
 const app = express();

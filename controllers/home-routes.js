@@ -1,6 +1,5 @@
 const router = require("express").Router();
-// const health = require("../public/js/health-calc");
-const { User } = require("../models");
+const { User, Exercise } = require("../models");
 const withAuth = require("../utils/auth");
 const calculate = require("fitness-health-calculations");
 const helper = require("../utils/helpers");
@@ -9,27 +8,21 @@ router.get("/", async (req, res) => {
   res.render("homepage", { loggedIn: req.session.loggedIn });
 });
 
-// router.get("/", async (req, res) => {
-//   try {
-//     const userData = await User.findAll({
-//       attributes: { exclude: ["password"] },
-//       order: [["name", "ASC"]],
-//     });
+router.get("/fitnessplan", async (req, res) => {
+  try {
+    const exerciseData = await Exercise.findAll();
+    console.log(exerciseData);
 
-//     const users = userData.map((project) => project.get({ plain: true }));
-//     console.log(users);
-//     res.render("homepage", {
-//       users,
-//       // Pass the logged in flag to the template
-//       loggedIn: req.session.loggedIn,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    const exercises = exerciseData.map((exercise) =>
+      exercise.get({ plain: true })
+    );
 
-router.get("/fitnessplan", withAuth, async (req, res) => {
-  res.render("fitnessplan", { loggedIn: req.session.loggedIn });
+    console.log(exercises);
+
+    res.render("fitnessplan", { exercises, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get("/login", async (req, res) => {
