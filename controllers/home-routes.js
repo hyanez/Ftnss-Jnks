@@ -19,7 +19,7 @@ router.get("/fitnessplan", async (req, res) => {
 
     console.log(exercises);
 
-    res.render("fitnessplan", { exercises });
+    res.render("fitnessplan", { exercises, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
