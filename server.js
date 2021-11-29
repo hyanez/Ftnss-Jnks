@@ -26,6 +26,7 @@ app.engine("handlebars", hbs.engine);
 //Lets express know that we want the view engine to be 'handlebars'
 app.set("view engine", "handlebars");
 
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(routes);
 

@@ -31,10 +31,10 @@ router.get("/:id", async (req, res) => {
 // POST /api/users
 // CREATE a new user
 router.post("/", async (req, res) => {
-  console.log("this is the rec" + req);
   try {
+    console.log(req.body);
     var str = req.body.email;
-    str = str.substring(str.indexOf("@") + 1);
+    str = str.substring(str.indexOf("@") - 1);
     const dbUserData = await User.create({
       username: str,
       email: req.body.email,
