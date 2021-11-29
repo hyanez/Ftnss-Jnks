@@ -5,5 +5,9 @@
     WELCOME TO FJ!
   </h1>
   <p>a convenient place to keep track of your fitness goals...</p>
-  <h2>HIT THE LOGIN TO GET STARTED</h2>
+  {{#unless loggedIn}}
+    <h2>HIT THE LOGIN TO GET STARTED</h2>
+  {{else}}
+    <h2>Hit Any NavBar Item to Get Started</h2>
+  {{/unless}}
 </div>
