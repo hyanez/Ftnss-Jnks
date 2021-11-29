@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
   try {
     console.log(req.body);
     var str = req.body.email;
-    str = str.substring(str.indexOf("@") - 1);
+    str = str.substring(0, str.indexOf("@"));
     const dbUserData = await User.create({
       username: str,
       email: req.body.email,
