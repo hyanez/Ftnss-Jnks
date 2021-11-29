@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { Exercise } = require("../models");
 const health = require("../public/js/health-calc");
 
 router.get("/", async (req, res) => {
@@ -6,7 +7,20 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/fitnessplan", async (req, res) => {
-  res.render("fitnessplan");
+  try {
+    const exerciseData = await Exercise.findAll();
+    console.log(exerciseData);
+
+    const exercises = exerciseData.map((exercise) =>
+      exercise.get({ plain: true })
+    );
+
+    console.log(exercises);
+
+    res.render("fitnessplan", { exercises });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get("/login", async (req, res) => {

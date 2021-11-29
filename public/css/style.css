@@ -115,3 +115,11 @@ h1 {
   border-color: navy;
   padding: 1em;
 }
+
+.exercise-card-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
