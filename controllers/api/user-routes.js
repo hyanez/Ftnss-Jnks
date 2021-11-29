@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
         id: req.params.id,
       },
     });
-    d;
+
     if (userData) res.status(200).json(userData);
     else res.status(404).json({ message: "User does not exist" });
   } catch (err) {
