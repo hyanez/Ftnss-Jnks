@@ -1,35 +1,33 @@
 const router = require("express").Router();
-// const health = require("../public/js/health-calc");
-const { User } = require("../models");
+const { User, Exercise, Recipe } = require("../models");
 const withAuth = require("../utils/auth");
 const calculate = require("fitness-health-calculations");
 const helper = require("../utils/helpers");
+// const recipe = require("../public/js/recipe");
 
 router.get("/", async (req, res) => {
   res.render("homepage", { loggedIn: req.session.loggedIn });
 });
 
-// router.get("/", async (req, res) => {
-//   try {
-//     const userData = await User.findAll({
-//       attributes: { exclude: ["password"] },
-//       order: [["name", "ASC"]],
-//     });
-
-//     const users = userData.map((project) => project.get({ plain: true }));
-//     console.log(users);
-//     res.render("homepage", {
-//       users,
-//       // Pass the logged in flag to the template
-//       loggedIn: req.session.loggedIn,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 router.get("/fitnessplan", withAuth, async (req, res) => {
-  res.render("fitnessplan", { loggedIn: req.session.loggedIn });
+  try {
+    const exerciseData = await Exercise.findAll();
+    console.log(exerciseData);
+
+    const exercises = exerciseData.map((exercise) =>
+      exercise.get({ plain: true })
+    );
+
+    console.log(exercises);
+
+    res.render("fitnessplan", {
+      exercises,
+      loggedIn: req.session.loggedIn,
+      user: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get("/login", async (req, res) => {
@@ -37,7 +35,18 @@ router.get("/login", async (req, res) => {
 });
 
 router.get("/mealplan", withAuth, async (req, res) => {
-  res.render("mealplan", { loggedIn: req.session.loggedIn });
+  const allRecipes = await Recipe.findAll();
+  console.log(allRecipes[0].id);
+  var currentRecipe = allRecipes[0];
+  for (i = 1; i < allRecipes.length; i++) {
+    var nextRecipe = allRecipes[i];
+    if (currentRecipe.id < nextRecipe.id) {
+      currentRecipe = nextRecipe;
+    }
+  }
+  currentRecipe = currentRecipe.dataValues;
+  console.log(currentRecipe);
+  res.render("mealplan", { currentRecipe, loggedIn: req.session.loggedIn });
 });
 
 router.get("/signup", async (req, res) => {

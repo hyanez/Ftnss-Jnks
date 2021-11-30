@@ -78,6 +78,14 @@ h1 {
 
 #fitnessplan-page {
   margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#recipe-area {
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .card {
@@ -114,4 +122,20 @@ h1 {
   border-width: 2px;
   border-color: navy;
   padding: 1em;
+}
+
+.exercise-card-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+#recipes li {
+  margin-top: 20px;
+}
+
+#links {
+  font-size: 2rem;
 }

@@ -56,6 +56,4 @@ Exercise.belongsTo(Workout, {
   foreignKey: "workout_id",
 });
 
-// recipe has many ingredients, not sure if will do this yet
-
 module.exports = { FitnessPlan, Workout, Exercise, MealPlan, Recipe, User };

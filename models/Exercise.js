@@ -15,6 +15,10 @@ Exercise.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    reps: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     workout_id: {
       type: DataTypes.INTEGER,
       references: {
