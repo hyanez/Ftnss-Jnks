@@ -16,8 +16,15 @@ Exercise.init(
       allowNull: false,
     },
     reps: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    workout_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "workout",
+        key: "id",
+      },
     },
   },
   {
