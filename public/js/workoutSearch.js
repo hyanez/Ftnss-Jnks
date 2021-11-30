@@ -1,18 +1,17 @@
-const workoutList = document.getElementById('workoutList');
-const searchBar = document.getElementById('searchBar');
-const data = require('/json/exercises.json');
-let woRoutines = [];
+const workoutList = document.getElementById("workoutList");
+const searchBar = document.getElementById("searchBar");
 
-console.log("test");
+woRoutines = [];
 
-
-searchBar.addEventListener('keyup', (e) => {
+searchBar.addEventListener("keyup", (e) => {
     const searchString = e.target.value.toLowerCase();
 
     const filteredExercises = woRoutines.filter((exercises) => {
         return (
             exercises.name.toLowerCase().includes(searchString) ||
-            exercises.primaryMuscles.toLowerCase().includes(searchString)
+            exercises.primaryMuscles.toLowerCase().includes(searchString) ||
+            exercises.force.toLowerCase().includes(searchString) ||
+            exercises.instructions.toLowerCase().includes(searchString)
         );
     });
     displayWorkouts(filteredExercises);
@@ -20,8 +19,9 @@ searchBar.addEventListener('keyup', (e) => {
 
 const loadWorkouts = async () => {
     try {
-        const res = await fetch('./json/exercises.json');
+        const res = await fetch("https://mocki.io/v1/c7f45e54-ebce-4e92-af0f-5df2e278d7cc");
         woRoutines = await res.json();
+        console.log(woRoutines);
         displayWorkouts(woRoutines);
     } catch (err) {
         console.error(err);
@@ -29,25 +29,19 @@ const loadWorkouts = async () => {
 };
 
 const displayWorkouts = (exercises) => {
-    const htmlString = exercises
-        .map((exercises) => {
+    const htmlString = exercises.map((exercises) => {
             return `
             <li class="workout">
                 <h2>${exercises.name}</h2>
                 <p>Muscle Group: ${exercises.primaryMuscles}</p>
                 <p>Force: ${exercises.force}</p>
-                <p>Level: ${exercises.level}</p>
-                <p>Equipment: ${exercises.equipment}</p>
-                <p></p>
                 <p>Instructions: ${exercises.instructions}</p>
                 
             </li>
         `;
         })
-        .join('');
+        .join("");
     workoutList.innerHTML = htmlString;
 };
-
-
 
 loadWorkouts();

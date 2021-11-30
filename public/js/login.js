@@ -1,4 +1,5 @@
 //Login authentication
+console.log("test");
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
