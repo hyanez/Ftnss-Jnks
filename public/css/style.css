@@ -127,3 +127,7 @@ h1 {
 #recipes li {
   margin-top: 20px;
 }
+
+#links {
+  font-size: 2rem;
+}

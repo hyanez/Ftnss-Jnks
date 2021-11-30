@@ -2,16 +2,23 @@
 
   <div id="fitnessplan-nav" class="conatiner">
     <h1>
-      Post Workout Meal Suggestions
+       Meal Suggestions
     </h1>
-
+    <h3>Because Eating Healthy Doesn't Mean Eating Bland</h3>
     <button id="recipe" type="submit">Get Recipe</button>
 
   </div>
 
   <div class="login-container">
     <h1>Recipes:</h1>
-    <ul id="recipes"></ul>
+    {{#if currentRecipe.recipe_name}}
+      <h2>{{currentRecipe.recipe_name}}</h2>
+      <img src="{{currentRecipe.image_url}}" alt="Italian Trulli" /></br>
+      <h3>Calories: {{currentRecipe.calories}}</h3>
+      <h3>{{currentRecipe.diet}}</h3>
+      <a id="links" href="{{currentRecipe.recipe_url}}" target="_blank">See The
+        Recipe Here</a>
+    {{/if}}
   </div>
 
 </div>

@@ -92,7 +92,7 @@ router.post("/", async (req, res) => {
         const name = response.data.hits[i].recipe.label;
         const url = response.data.hits[i].recipe.url;
         const calories = response.data.hits[i].recipe.calories.toFixed(1);
-        const thumbnail = response.data.hits[i].recipe.images.THUMBNAIL.url;
+        const thumbnail = response.data.hits[i].recipe.images.REGULAR.url;
         console.log(thumbnail);
         const data = {
           name: name,
@@ -119,15 +119,6 @@ router.post("/", async (req, res) => {
       .then(function () {
         // always executed
       });
-
-    // console.log("this is newrecipe" + newRecipe);
-    // // const newRecipeData = await Recipe.create({
-    // //   recipe_name: recipeAPIData.name,
-    // //   recipe_url: recipeAPIData.url,
-    // //   calories: recipeAPIData.calories,
-    // // });
-
-    // res.status(200).json(newRecipe);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

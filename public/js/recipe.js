@@ -1,6 +1,6 @@
 //Dependencies and Global Vars
 const recipeHandler = async (event) => {
-  event.preventDefault();
+  // event.preventDefault();
 
   var FETCH_TIMEOUT = 5000;
   new Promise(function (resolve, reject) {
@@ -18,7 +18,17 @@ const recipeHandler = async (event) => {
       })
       .then(function (responseObject) {
         // process results
-        console.log(responseObject.url);
+
+        const exportData = {
+          name: responseObject.name,
+          url: responseObject.url,
+          calories: responseObject.calories,
+          diet: responseObject.diet,
+          image: responseObject.image_url,
+          loggedIn: true,
+        };
+        console.log(exportData);
+        // module.exports = exportData;
         resolve();
       })
       .catch(function (err) {
@@ -33,4 +43,7 @@ const recipeHandler = async (event) => {
     });
 };
 
-document.querySelector("#recipe").addEventListener("click", recipeHandler);
+document.querySelector("#recipe").addEventListener("click", function () {
+  recipeHandler();
+  window.location.reload();
+});
