@@ -45,5 +45,5 @@ const recipeHandler = async (event) => {
 
 document.querySelector("#recipe").addEventListener("click", function () {
   recipeHandler();
-  window.location.reload();
+  document.location.replace("/mealplan");
 });
