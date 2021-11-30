@@ -19,7 +19,7 @@ searchBar.addEventListener("keyup", (e) => {
 
 const loadWorkouts = async () => {
     try {
-        const res = await fetch("https://mocki.io/v1/c7f45e54-ebce-4e92-af0f-5df2e278d7cc");
+        const res = await fetch("/json/exercises.json");
         woRoutines = await res.json();
         console.log(woRoutines);
         displayWorkouts(woRoutines);
@@ -45,3 +45,4 @@ const displayWorkouts = (exercises) => {
 };
 
 loadWorkouts();
+// https://mocki.io/v1/c7f45e54-ebce-4e92-af0f-5df2e278d7cc
