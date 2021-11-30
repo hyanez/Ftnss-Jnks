@@ -27,35 +27,33 @@ Recipe.belongsTo(MealPlan, {
 });
 
 //user has one fitness plan
-// User.hasOne(FitnessPlan, {
-//   foreignKey: "user_id",
-//   onDelete: "CASCADE",
-// });
+User.hasOne(FitnessPlan, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
 
-// FitnessPlan.belongsTo(User, {
-//   foreignKey: "mealplan_id",
-// });
+FitnessPlan.belongsTo(User, {
+  foreignKey: "mealplan_id",
+});
 
-// //fitnessplan has many workouts
-// FitnessPlan.hasMany(Workout, {
-//   foreignKey: "fitnessplan_id",
-//   onDelete: "CASCADE",
-// });
+//fitnessplan has many workouts
+FitnessPlan.hasMany(Workout, {
+  foreignKey: "fitnessplan_id",
+  onDelete: "CASCADE",
+});
 
-// Workout.belongsTo(FitnessPlan, {
-//   foreignKey: "fitnessplan_id",
-// });
+Workout.belongsTo(FitnessPlan, {
+  foreignKey: "fitnessplan_id",
+});
 
 //workout has many exercises
-// Workout.hasMany(Exercise, {
-//   foreignKey: "workout_id",
-//   onDelete: "CASCADE",
-// });
+Workout.hasMany(Exercise, {
+  foreignKey: "workout_id",
+  onDelete: "CASCADE",
+});
 
-// Exercise.belongsTo(Workout, {
-//   foreignKey: "workout_id",
-// });
-
-// recipe has many ingredients, not sure if will do this yet
+Exercise.belongsTo(Workout, {
+  foreignKey: "workout_id",
+});
 
 module.exports = { FitnessPlan, Workout, Exercise, MealPlan, Recipe, User };
