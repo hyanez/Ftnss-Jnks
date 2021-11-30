@@ -56,58 +56,57 @@ function getRandomIngridient() {
   return ingridient;
 }
 
-const getRecipe = async () => {
-  var keyword = getRandomIngridient();
-  var dietSelector = "high-protein";
-  var edRequestURL =
-    "https://api.edamam.com/api/recipes/v2?type=public&q=" +
-    keyword +
-    "&app_id=" +
-    edAppId +
-    "&app_key=" +
-    edApiKey +
-    "&diet=" +
-    dietSelector;
-  //   var exampleURL =
-  //     "https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=6514ecc7&app_key=%20acbc552b3d19b454a25e304e3010ca7e&diet=high-protein";
-  var newRecipe = getRec(edRequestURL);
-  return newRecipe;
-};
-
-const getRec = async (url) => {
-  axios
-    .get(url)
-    .then(function (response) {
-      // handle success
-      const data = response.data.hits[0].recipe;
-      console.log(data);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });
-};
-
 router.post("/", async (req, res) => {
   try {
-    const recipeAPIData = await getRecipe();
-    console.log(recipeAPIData);
-    // console.log(req.body);
-    // var str = req.body.email;
-    // str = str.substring(0, str.indexOf("@"));
-    // const dbUserData = await User.create({
-    //   username: str,
-    //   email: req.body.email,
-    //   password: req.body.password,
-    //   height: req.body.height,
-    //   weight: req.body.weight,
-    //   age: req.body.age,
-    //   gender: req.body.gender,
-    // });
-    res.status(200).json(recipeAPIData);
+    var keyword = getRandomIngridient();
+    var dietSelector = "high-protein";
+    var edRequestURL =
+      "https://api.edamam.com/api/recipes/v2?type=public&q=" +
+      keyword +
+      "&app_id=" +
+      edAppId +
+      "&app_key=" +
+      edApiKey +
+      "&diet=" +
+      dietSelector;
+
+    var newRecipe = await axios
+      .get(edRequestURL)
+      .then(function (response) {
+        // handle success
+        let i = Math.floor(Math.random() * 17);
+        const name = response.data.hits[i].recipe.label;
+        const url = response.data.hits[i].recipe.url;
+        const calories = response.data.hits[i].recipe.calories.toFixed(1);
+        const data = {
+          name: name,
+          url: url,
+          calories: calories,
+        };
+        console.log(data);
+        const newRecipeData = Recipe.create({
+          recipe_name: data.name,
+          recipe_url: data.url,
+          calories: data.calories,
+        });
+        res.status(200).json(newRecipeData);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+
+    // console.log("this is newrecipe" + newRecipe);
+    // // const newRecipeData = await Recipe.create({
+    // //   recipe_name: recipeAPIData.name,
+    // //   recipe_url: recipeAPIData.url,
+    // //   calories: recipeAPIData.calories,
+    // // });
+
+    // res.status(200).json(newRecipe);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

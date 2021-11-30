@@ -23,13 +23,17 @@ Recipe.init(
         isUrl: true,
       },
     },
-    mealplan_id: {
+    calories: {
       type: DataTypes.INTEGER,
-      references: {
-        model: "mealplan",
-        key: "id",
-      },
+      allowNull: false,
     },
+    // mealplan_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: "mealplan",
+    //     key: "id",
+    //   },
+    // },
   },
   {
     sequelize,
