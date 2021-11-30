@@ -84,7 +84,7 @@ router.post("/", async (req, res) => {
       "&diet=" +
       dietSelector;
 
-    var newRecipe = await axios
+    axios
       .get(edRequestURL)
       .then(function (response) {
         // handle success
@@ -109,7 +109,8 @@ router.post("/", async (req, res) => {
           diet: data.diet,
           image_url: data.image_url,
         });
-        res.status(200).json(newRecipeData);
+
+        res.status(200).json(data);
       })
       .catch(function (error) {
         // handle error
