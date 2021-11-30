@@ -1,8 +1,9 @@
 const router = require("express").Router();
-const { User, Exercise } = require("../models");
+const { User, Exercise, Recipe } = require("../models");
 const withAuth = require("../utils/auth");
 const calculate = require("fitness-health-calculations");
 const helper = require("../utils/helpers");
+// const recipe = require("../public/js/recipe");
 
 router.get("/", async (req, res) => {
   res.render("homepage", { loggedIn: req.session.loggedIn });
@@ -19,7 +20,11 @@ router.get("/fitnessplan", withAuth, async (req, res) => {
 
     console.log(exercises);
 
-    res.render("fitnessplan", { exercises, loggedIn: req.session.loggedIn });
+    res.render("fitnessplan", {
+      exercises,
+      loggedIn: req.session.loggedIn,
+      user: req.session.user_id,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -30,7 +35,18 @@ router.get("/login", async (req, res) => {
 });
 
 router.get("/mealplan", withAuth, async (req, res) => {
-  res.render("mealplan", { loggedIn: req.session.loggedIn });
+  const allRecipes = await Recipe.findAll();
+  console.log(allRecipes[0].id);
+  var currentRecipe = allRecipes[0];
+  for (i = 1; i < allRecipes.length; i++) {
+    var nextRecipe = allRecipes[i];
+    if (currentRecipe.id < nextRecipe.id) {
+      currentRecipe = nextRecipe;
+    }
+  }
+  currentRecipe = currentRecipe.dataValues;
+  console.log(currentRecipe);
+  res.render("mealplan", { currentRecipe, loggedIn: req.session.loggedIn });
 });
 
 router.get("/signup", async (req, res) => {
