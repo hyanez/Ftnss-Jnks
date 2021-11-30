@@ -78,6 +78,14 @@ h1 {
 
 #fitnessplan-page {
   margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#recipe-area {
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .card {
