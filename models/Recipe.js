@@ -27,6 +27,17 @@ Recipe.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    diet: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isUrl: true,
+      },
+    },
     // mealplan_id: {
     //   type: DataTypes.INTEGER,
     //   references: {

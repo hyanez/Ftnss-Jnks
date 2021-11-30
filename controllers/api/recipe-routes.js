@@ -56,10 +56,24 @@ function getRandomIngridient() {
   return ingridient;
 }
 
+function getRandomDiet() {
+  var dietList = [
+    "balanced",
+    "high-fiber",
+    "high-protein",
+    "low-carb",
+    "low-fat",
+    "low-sodium",
+  ];
+  var i = Math.floor(Math.random() * (dietList.length - 1));
+  var diet = dietList[i];
+  return diet;
+}
+
 router.post("/", async (req, res) => {
   try {
     var keyword = getRandomIngridient();
-    var dietSelector = "high-protein";
+    var dietSelector = getRandomDiet();
     var edRequestURL =
       "https://api.edamam.com/api/recipes/v2?type=public&q=" +
       keyword +
@@ -78,16 +92,22 @@ router.post("/", async (req, res) => {
         const name = response.data.hits[i].recipe.label;
         const url = response.data.hits[i].recipe.url;
         const calories = response.data.hits[i].recipe.calories.toFixed(1);
+        const thumbnail = response.data.hits[i].recipe.images.THUMBNAIL.url;
+        console.log(thumbnail);
         const data = {
           name: name,
           url: url,
           calories: calories,
+          diet: dietSelector,
+          image_url: thumbnail,
         };
         console.log(data);
         const newRecipeData = Recipe.create({
           recipe_name: data.name,
           recipe_url: data.url,
           calories: data.calories,
+          diet: data.diet,
+          image_url: data.image_url,
         });
         res.status(200).json(newRecipeData);
       })
