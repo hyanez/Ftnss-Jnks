@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
   res.render("homepage", { loggedIn: req.session.loggedIn });
 });
 
-router.get("/fitnessplan", async (req, res) => {
+router.get("/fitnessplan", withAuth, async (req, res) => {
   try {
     const exerciseData = await Exercise.findAll();
     console.log(exerciseData);
