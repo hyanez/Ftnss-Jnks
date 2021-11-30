@@ -20,7 +20,11 @@ router.get("/fitnessplan", withAuth, async (req, res) => {
 
     console.log(exercises);
 
-    res.render("fitnessplan", { exercises, loggedIn: req.session.loggedIn });
+    res.render("fitnessplan", {
+      exercises,
+      loggedIn: req.session.loggedIn,
+      user: req.session.user_id,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
