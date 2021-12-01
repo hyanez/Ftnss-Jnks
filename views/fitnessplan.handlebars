@@ -1,12 +1,12 @@
 
-<div id="fitnessplan-page" class="column">
+<div id="fitnessplan-page" class="column col-sm">
 
-  <div id="fitnessplan-nav" class="continer">
+  <div id="fitnessplan-nav" class="conatiner-fixed">
     <h1>
-      Workout Search
+      Add To Workout:
     </h1>
   </div>
-
+{{!-- 
       <div class="card-deck">
       <div class="card" style="width: 18rem;">
         <div id="searchWrapper">
@@ -21,4 +21,59 @@
           <ul id="workoutList"></ul>
 
 </div>
-<script src="/js/workoutSearch.js"></script>
+<script src="/js/workoutSearch.js"></script> --}}
+
+  <div class="login-container container">
+
+    <form class="exercise-form">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Exercise Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exercise-name"
+          placeholder="Enter Exercise"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Reps</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exercise-reps"
+          placeholder="Reps"
+        />
+      </div>
+
+      <button id="button" type="submit" class="btn btn-primary">Add To Workout</button>
+    </form>
+  </div>
+
+  <div id="fitnessplan-nav" class="conatiner-fixed">
+    <h1>
+      My Routine:
+    </h1>
+
+  </div>
+
+  <div class="exercise-card-section">
+    {{#each exercises as |exercise|}}
+      <div class="card">
+        <div class="card-header">
+          <h1>{{exercise.exercise_name}}</h1>
+        </div>
+        <br />
+        <br />
+        <div class="card-content">
+          <p>
+            {{exercise.reps}}
+          </p>
+        </div>
+
+      </div>
+    {{/each}}
+  </div>
+
+</div>
+
+<script src="/js/add-exercise.js"></script>
